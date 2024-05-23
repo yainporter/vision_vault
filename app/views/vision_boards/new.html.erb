@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "new-vision-board" do %>
   <%= simple_form_for @vision_board do |f| %>
-  
+    <%= f.input :title %>
+    <%= f.button :submit %>
   <% end %>
 <% end %>
