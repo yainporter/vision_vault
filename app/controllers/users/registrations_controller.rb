@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def
   # DELETE /resource
   # def destroy
   #   super
