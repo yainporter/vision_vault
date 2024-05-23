@@ -1,6 +1,7 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <% unless current_user %>
       <%= link_to 'Log In', new_user_session_path, method: :get%>
+      <%= link_to 'Sign Up', new_user_registration_path, method: :get%>
     <% end %>
   <% if current_user %>
     <ul>

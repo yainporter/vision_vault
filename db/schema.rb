@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_161017) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_194345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,10 +42,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_161017) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "uploads", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_uploads_on_user_id"
+    t.bigint "vision_board_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
+    t.index ["vision_board_id"], name: "index_images_on_vision_board_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +62,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_161017) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vision_board_images", force: :cascade do |t|
+    t.bigint "vision_board_id", null: false
+    t.bigint "image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_vision_board_images_on_image_id"
+    t.index ["vision_board_id"], name: "index_vision_board_images_on_vision_board_id"
+  end
+
   create_table "vision_boards", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -70,6 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_161017) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "uploads", "users"
+  add_foreign_key "images", "users"
+  add_foreign_key "images", "vision_boards"
+  add_foreign_key "vision_board_images", "images"
+  add_foreign_key "vision_board_images", "vision_boards"
   add_foreign_key "vision_boards", "users"
 end

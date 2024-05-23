@@ -1,0 +1,11 @@
+<h1><%= @vision_board.title %></h1>
+
+<% require 'pry'; binding.pry %>
+<% if @images %>
+  <% @images.each do |image|  %>
+    <%= image_tag url_for(image.variant(resize_to_limit: [100, 100])) %>
+    <%= image.name %>
+  <% end %>
+<% else %>
+  <p>No image attached</p>
+<% end %>
