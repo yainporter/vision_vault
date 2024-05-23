@@ -7,9 +7,8 @@ class ImagesController < ApplicationController
 
   def create
     upload = current_user.images.create!(image_params)
-    require 'pry'; binding.pry
     vision_board_image = VisionBoardImage.create!(vision_board_id: vision_board_id, image_id: upload.id)
-    vision_board_image.image.attach(image)
+    vision_board_image.vision_image.attach(params[:image][:image])
 
     redirect_to dashboard_path
   end

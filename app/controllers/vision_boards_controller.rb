@@ -4,7 +4,6 @@ class VisionBoardsController < ApplicationController
   end
 
   def show
-    require 'pry'; binding.pry
     @vision_board = VisionBoard.find(params[:id])
     @images = @vision_board.vision_board_images
   end

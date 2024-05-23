@@ -3,8 +3,4 @@ class VisionBoard < ApplicationRecord
   belongs_to :user
   has_many :vision_board_images
   validates :title, presence: true
-
-  def vision_board_images
-    VisionBoard.includes(images_attachments: :blob).find(self.id)
-  end
 end
