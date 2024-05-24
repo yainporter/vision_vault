@@ -1,25 +1,30 @@
 require "rails_helper"
 
 RSpec.describe "Vision Board New", type: :feature do
-
   describe "Creating a new Vision Board" do
-    context "a user fills out the information to create a new Vision Board" do
-      it "appears on the User's dashboard", :vcr do
-        user = User.new(email: "test@test.test", password: "testing")
+    let(:user) { create(:user) }
+
+    context "a user fills out title create a new Vision Board" do
+      it "creates a new VisionBoard for the User" do
         login_as(user)
+        visit new_vision_board_path
 
-        visit dashboard_path
+        expect {
+          fill_in "Title", with: "D&D"
+          click_button "Create Vision board"
+        }.to change {VisionBoard.count}.by(1)
+      end
+    end
 
-        expect(page).to_not have_content("D&D")
+    context "a user leaves the title blank" do
+      it "does not create a VisionBoard" do
+        login_as(user)
+        visit new_vision_board_path
 
-        click_button("New Vision Board")
-        
-        within "#new-vision-board" do
-          fill_in "Name", with: "D&D"
-          click_button "Create"
-        end
-
-        expect(page).to have_content("D&D")
+        expect {
+          fill_in "Title", with: "D&D"
+          click_button "Create Vision board"
+        }.to change {VisionBoard.count}.by(1)
       end
     end
   end
