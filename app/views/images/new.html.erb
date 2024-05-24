@@ -1,8 +1,1 @@
-<%= turbo_frame_tag "new-upload" do %>
-  <%= simple_form_for @image do |f| %>
-    <%= f.input :name %>
-    <%= f.input :image, as: :file %>
-    <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
-    <%= f.button :submit %>
-  <% end %>
-<% end %>
+<%= render partial: "shared/new_image_form" %>

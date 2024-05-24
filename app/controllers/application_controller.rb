@@ -3,8 +3,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 before_action :authenticate_user!
 
   def invalid_record(error)
-    flash[:error] = error.message
-    redirect_to new_vision_board_path
+    flash.now[:error] = error.message
+    redirect_to dashboard_path
   end
 
   def after_sign_in_path_for(resource)
