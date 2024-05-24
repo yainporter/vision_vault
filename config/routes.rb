@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "users#show", as: :dashboard
   resources :vision_boards, only: [:index, :show, :new, :create]
-  resources :images, only: [:new, :create]
+  resources :images, only: [:index, :new, :create]
 end
