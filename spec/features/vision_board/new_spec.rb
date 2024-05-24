@@ -22,9 +22,9 @@ RSpec.describe "Vision Board New", type: :feature do
         visit new_vision_board_path
 
         expect {
-          fill_in "Title", with: "D&D"
+          fill_in "Title", with: ""
           click_button "Create Vision board"
-        }.to change {VisionBoard.count}.by(1)
+        }.not_to change {VisionBoard.count}
       end
     end
   end

@@ -18,6 +18,7 @@ RSpec.describe "User Edit", type: :feature do
         expect(user.avatar.attached?).to be true
       end
 
+      # Is this a necessary test?
       it "displays the image on the page" do
         login_as(user)
         visit edit_user_registration_path
