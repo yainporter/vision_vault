@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-before_action :authenticate_user!
+  include Pagy::Backend
+  rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
+  before_action :authenticate_user!
 
   def invalid_record(error)
     flash.now[:error] = error.message

@@ -6,4 +6,8 @@ class VisionBoardImage < ApplicationRecord
   def image_name
     self.image.name
   end
+
+  def self.search_images(keyword)
+
+  end
 end
