@@ -1,4 +1,11 @@
 class ImagesController < ApplicationController
+  def index
+    begin
+      @pagy, @search_images = pagy(Image.search_vision_board_images(keyword))
+    rescue ActionController::ParameterMissing
+      @pagy, @images = pagy(Image.all)
+    end
+  end
 
   def new
     @image = Image.new
@@ -7,7 +14,7 @@ class ImagesController < ApplicationController
 
   def create
     upload = current_user.images.create!(image_params)
-    if image.present?
+    if params[:image][:image].present?
       vision_board_image = VisionBoardImage.create!(vision_board_id: vision_board_id, image_id: upload.id)
       vision_board_image.vision_image.attach(params[:image][:image])
       redirect_to dashboard_path
@@ -19,12 +26,12 @@ class ImagesController < ApplicationController
 
   private
 
-  def image_params
-    params.require(:image).permit(:name, :vision_board_id, images:[])
+  def keyword
+    params.require(:image_search)[:search]
   end
 
-  def image
-    params[:image][:image]
+  def image_params
+    params.require(:image).permit(:name, :vision_board_id, images:[])
   end
 
   def vision_board_id
