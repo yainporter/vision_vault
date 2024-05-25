@@ -1,8 +1,12 @@
 {
   "devDependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.24.6"
+    "@babel/plugin-transform-react-jsx": "^7.24.6",
+    "webpack-dev-server": "^3"
   },
   "dependencies": {
-    "preact_ujs": "^0.1.1"
+    "@rails/webpacker": "5.4.4",
+    "preact_ujs": "^0.1.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   }
 }
