@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :vision_boards
   has_many :images
+  has_many :vision_board_images, through: :vision_boards
 end
