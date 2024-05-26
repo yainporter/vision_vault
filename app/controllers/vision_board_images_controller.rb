@@ -8,6 +8,7 @@ class VisionBoardImagesController < ApplicationController
   def create
     vision_board_image = VisionBoardImage.new(vision_board_image_params)
     if vision_board_image.save
+      require 'pry'; binding.pry
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace("create-vision-board-image-#{vision_board_image_params[:image_id]}", partial: "/shared/successful_creation")
@@ -23,5 +24,9 @@ class VisionBoardImagesController < ApplicationController
 
   def vision_board_image_params
     params.require(:vision_board_image).permit(:vision_board_id, :image_id)
+  end
+
+  def image
+    Image.find(vision_board_image_params[:image_id])
   end
 end
