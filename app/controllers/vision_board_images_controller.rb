@@ -7,7 +7,6 @@ class VisionBoardImagesController < ApplicationController
 
   def create
     vision_board_image = VisionBoardImage.new(vision_board_image_params)
-    vision_board_image.image_id = 10000
     if vision_board_image.save
       respond_to do |format|
         format.turbo_stream do
