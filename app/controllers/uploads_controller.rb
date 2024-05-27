@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
   def index
     begin
-      @pagy, @search_uploads = pagy(Upload.search_vision_board_uploads(keyword))
+      @pagy, @search_uploads = pagy(Upload.image_search(keyword))
     rescue ActionController::ParameterMissing
       @pagy, @uploads = pagy(Upload.all)
     end
@@ -14,10 +14,10 @@ class UploadsController < ApplicationController
 
   def create
     upload = current_user.uploads.create!(upload_params)
-    upload.image.attach(params[:image][:image])
     if params[:image][:image].present?
-      vision_board_image = VisionBoardUpload.create!(vision_board_id: vision_board_id, upload_id: upload.id)
-      vision_board_Upload.vision_Upload.attach(params[:image][:image])
+      upload.image.attach(params[:image][:image])
+      VisionBoardImage.create!(vision_board_id: vision_board_id, upload_id: upload.id)
+
       redirect_to dashboard_path
     else
       flash[:error] = "Please attach an image, try again."

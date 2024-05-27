@@ -3,8 +3,8 @@ class VisionBoardImage < ApplicationRecord
   belongs_to :vision_board
   has_one_attached :vision_image
 
-  def upload_name
-    self.image.name
+  def self.image_attachment
+    Upload.joins(:vision_board_images)
   end
 
   def self.search_uploads(keyword)
