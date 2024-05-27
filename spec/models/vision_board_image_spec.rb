@@ -7,7 +7,7 @@ RSpec.describe VisionBoardImage, type: :model do
       let(:user2) { create(:user) }
       let(:vision_board) { create(:vision_board, user_id: user.id) }
 
-      it "returns all the uploads a User has added to the VisionBoard" do
+      it "returns all the Uploads attached to a VisionBoard" do
         upload = create(:upload, user_id:user.id, vision_board_id: vision_board.id)
         upload2 = create(:upload, user_id:user.id, vision_board_id: vision_board.id)
         upload3 = create(:upload, user_id:user2.id, vision_board_id: vision_board.id)
