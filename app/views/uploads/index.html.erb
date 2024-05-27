@@ -1,13 +1,13 @@
 <%= render partial: "shared/search_form" %>
-
-<% if @search_images %>
+<% if @search_uploads %>
   <div id="search-results">
-    <% @search_images.each do |uploaded_image| %>
+    <% @search_uploads.each do |uploaded_image| %>
       <%= image_tag url_for(uploaded_image.image.variant(resize_to_limit: [300, 300])) %>
       <br>
       <%= turbo_frame_tag "create-vision-board-image-#{uploaded_image.id}" do %>
         <div id="results-<%= uploaded_image.id %>">
           <%=  uploaded_image.name %>
+          <br>
           <%= link_to 'Add', new_vision_board_image_path(@vision_board_image, upload_id: uploaded_image.id), method: :get, class: "btn btn-primary" %>
         </div>
       <% end %>
