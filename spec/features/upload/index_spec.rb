@@ -6,10 +6,10 @@ RSpec.describe "Image Index", type: :feature do
       let!(:user) { create(:user) }
 
       xit "displays a max list of 20 images" do
-        create_list(:image, 30, name: "Bag", user_id: user.id)
+        create_list(:upload, 30, name: "Bag", user_id: user.id)
         login_as(user)
 
-        visit images_path
+        visit uploads
         fill_in "Search", with: "bag"
         click_button "Search"
 
@@ -26,11 +26,11 @@ RSpec.describe "Image Index", type: :feature do
         create(:vision_board, user_id: user.id)
 
         user2 = create(:user)
-        create(:image, name: "Dog", user_id: user2.id)
+        create(:upload, name: "Dog", user_id: user2.id)
 
         expect{
           login_as(user)
-          visit images_path
+          visit uploads
           fill_in "Search", with: "dog"
           click_button "Search"
           within "#results-#{}" do
