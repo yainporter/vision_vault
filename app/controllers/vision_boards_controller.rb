@@ -5,7 +5,7 @@ class VisionBoardsController < ApplicationController
 
   def show
     @vision_board = VisionBoard.find(params[:id])
-    @images = @vision_board.vision_board_images.image_attachment
+    @images = @vision_board.image_attachments
   end
 
   def new
