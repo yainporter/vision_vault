@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @vision_boards = current_user.vision_boards
-    @image = Image.new
+    @upload = Upload.new
   end
 
   def edit

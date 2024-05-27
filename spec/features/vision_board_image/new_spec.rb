@@ -6,11 +6,11 @@ RSpec.describe "New Vision Board Image", type: :feature do
       user = create(:user)
       create(:vision_board, user_id: user.id)
       user2 = create(:user)
-      image = create(:image, name: "Dog", user_id: user2.id)
+      image = create(:upload, name: "Dog", user_id: user2.id)
 
       expect{
         login_as(user)
-        visit new_vision_board_image_path(image_id: image.id)
+        visit new_vision_board_image_path(upload_id: image.id)
         click_button "Add Image"
       }.to change {user.vision_board_images.count}.by(1)
     end
@@ -24,9 +24,9 @@ RSpec.describe "New Vision Board Image", type: :feature do
 
       expect{
         login_as(user)
-        visit new_vision_board_image_path(image_id: 1)
+        visit new_vision_board_image_path(upload_id: 1)
         click_button "Add Image"
-      }.to_not change {user.vision_board_images.count}.by(1)
+    }.not_to change {user.vision_board_images.count}
     end
   end
 end

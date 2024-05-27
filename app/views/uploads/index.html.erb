@@ -8,7 +8,7 @@
       <%= turbo_frame_tag "create-vision-board-image-#{uploaded_image.id}" do %>
         <div id="results-<%= uploaded_image.id %>">
           <%=  uploaded_image.name %>
-          <%= link_to 'Add', new_vision_board_image_path(@vision_board_image, image_id: uploaded_image.id), method: :get, class: "btn btn-primary" %>
+          <%= link_to 'Add', new_vision_board_image_path(@vision_board_image, upload_id: uploaded_image.id), method: :get, class: "btn btn-primary" %>
         </div>
       <% end %>
       <br>

@@ -1,9 +1,9 @@
-<%= turbo_frame_tag "create-vision-board-image-#{@image_id}" do %>
+<%= turbo_frame_tag "create-vision-board-image-#{@upload_id}" do %>
   <%= render partial: "shared/flash" %>
 
   <%= simple_form_for @vision_board_image do |f| %>
     <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
-    <%= f.input :image_id, as: :hidden, input_html: { value: @image_id } %>
+    <%= f.input :upload_id, as: :hidden, input_html: { value: @upload_id } %>
     <%= f.button :submit, "Add Image" %>
   <% end %>
 <% end %>
