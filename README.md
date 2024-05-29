@@ -6,4 +6,4 @@ This is a hackathon Ruby on Rails project where I create a fullstack application
 - ActiveStorage
 
 ## Database
-![database setup]([http://url/to/img.png](https://github.com/yainporter/vision_vault/blob/main/app/assets/images/db_design.png?raw=true))
+![database setup](https://github.com/yainporter/vision_vault/assets/144638203/4f37639b-2242-438c-a67d-85f9cb56982a)
