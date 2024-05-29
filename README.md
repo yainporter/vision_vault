@@ -1,24 +1,9 @@
-# README
+# VisionVault
+VisionVault is a place where Users can create vision boards and upload or find images that match their vision for whatever their vision board is for.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a hackathon Ruby on Rails project where I create a fullstack application using:
+- Devise
+- ActiveStorage
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Database
+![database setup]([http://url/to/img.png](https://github.com/yainporter/vision_vault/blob/main/app/assets/images/db_design.png?raw=true))
