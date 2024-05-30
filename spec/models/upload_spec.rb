@@ -1,6 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Upload, type: :model do
+  describe "validations" do
+    it { should belong_to(:user) }
+    it { should have_many(:vision_board_images) }
+    it { should have_many(:vision_boards).through(:vision_board_images) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:description) }
+  end
+
   describe "class methods" do
     describe ".image_search" do
       let!(:user) { create(:user) }
