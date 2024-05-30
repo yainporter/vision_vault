@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def invalid_record(error)
-    flash.now[:error] = error.message
+    flash[:error] = error.message
     redirect_to dashboard_path
   end
 

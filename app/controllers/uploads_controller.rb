@@ -13,15 +13,16 @@ class UploadsController < ApplicationController
   end
 
   def create
-    upload = current_user.uploads.create!(upload_params)
-    if params[:image][:image].present?
-      upload.image.attach(params[:image][:image])
-      VisionBoardImage.create!(vision_board_id: vision_board_id, upload_id: upload.id)
+    upload = current_user.uploads.new(upload_params)
+    if upload.save! && upload_params[:image]
+      upload.image.attach(upload_params[:image])
+      VisionBoardImage.create!(vision_board_id: upload_params[:vision_board_id], upload_id: upload.id)
 
-      redirect_to dashboard_path
+      flash[:alert] = "Successfully added to your vision board!"
+      redirect_to new_upload_path
     else
       flash[:error] = "Please attach an image, try again."
-      redirect_to dashboard_path
+      redirect_to new_upload_path
     end
   end
 
@@ -32,10 +33,6 @@ class UploadsController < ApplicationController
   end
 
   def upload_params
-    params.require(:upload).permit(:name, :vision_board_id, uploads:[])
-  end
-
-  def vision_board_id
-    params[:image][:vision_board_id].last
+    params.require(:upload).permit(:name, :vision_board_id, :image)
   end
 end

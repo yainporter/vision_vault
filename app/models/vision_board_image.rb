@@ -6,8 +6,4 @@ class VisionBoardImage < ApplicationRecord
   def self.image_attachment
     Upload.joins(:vision_board_images)
   end
-
-  def self.search_uploads(keyword)
-
-  end
 end

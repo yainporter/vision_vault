@@ -1,6 +1,7 @@
 class Upload < ApplicationRecord
   belongs_to :user
   has_many :vision_board_images
+  has_many :vision_boards, through: :vision_board_images
   has_one_attached :image
   validates :name, presence: true
 

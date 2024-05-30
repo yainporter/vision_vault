@@ -1,14 +1,15 @@
-<%= render partial: "shared/flash" %>
-
 <%= link_to 'Create Vision Board', new_vision_board_path, data: { turbo_method: :get } %>
 
 <% unless current_user.avatar.attached? %>
 <%= link_to 'Upload profile picture!', edit_user_registration_path, method: :get %>
 <% end %>
-
+<div class="flash">
+  <%= render partial: "shared/flash" %>
+</div>
 <% unless @vision_boards.empty? %>
-<%= render partial: "shared/new_upload_form" %>
-
+  <%= turbo_frame_tag "image-upload" do %>
+      <%= link_to 'Add', new_upload_path, method: :get, class: "btn btn-primary" %>
+  <% end %>
 
   <div class="vision-boards">
     <% @vision_boards.each do |board| %>
