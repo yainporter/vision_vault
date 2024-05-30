@@ -33,6 +33,6 @@ class UploadsController < ApplicationController
   end
 
   def upload_params
-    params.require(:upload).permit(:name, :vision_board_id, :image)
+    params.require(:upload).permit(:name, :vision_board_id, :image, :description)
   end
 end
