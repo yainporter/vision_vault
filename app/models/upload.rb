@@ -4,6 +4,7 @@ class Upload < ApplicationRecord
   has_many :vision_boards, through: :vision_board_images
   has_one_attached :image
   validates :name, presence: true
+  validates :description, presence: true
 
   def self.image_search(keyword)
     unless keyword.empty?
