@@ -1,8 +1,0 @@
-<%= turbo_frame_tag @upload do %>
-  <%= simple_form_for @upload do |f| %>
-    <%= f.input :name %>
-    <%= f.input :upload, as: :file %>
-    <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
-    <%= f.button :submit %>
-  <% end %>
-<% end %>

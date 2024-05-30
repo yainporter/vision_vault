@@ -6,6 +6,6 @@ class VisionBoard < ApplicationRecord
   validates :title, presence: true
 
   def image_attachments
-    uploads.joins(:vision_board_images)
+    Upload.joins(:vision_boards).where("vision_boards.id = ?", self.id)
   end
 end
