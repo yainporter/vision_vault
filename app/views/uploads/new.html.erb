@@ -1,6 +1,4 @@
 <%= turbo_frame_tag "image-upload" do %>
-  <%= render partial: "shared/flash" %>
-
   <%= simple_form_for @upload do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
