@@ -20,7 +20,6 @@ RSpec.describe "Image Index", type: :feature do
     end
 
     context "a User adds an image result to their visionboard" do
-
       xit "creates a VisionBoardImage for the User's VisionBoard" do
         user = create(:user)
         create(:vision_board, user_id: user.id)

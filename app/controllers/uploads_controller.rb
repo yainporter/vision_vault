@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   def index
     begin
+      require 'pry'; binding.pry
       @pagy, @search_uploads = pagy(Upload.image_search(keyword))
     rescue ActionController::ParameterMissing
       @pagy, @uploads = pagy(Upload.all)
