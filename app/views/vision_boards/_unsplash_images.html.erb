@@ -1,0 +1,4 @@
+<% @unsplash.each do |image|  %>
+  <%= image_tag url_for(image.custom_size) %> <br>
+  <%=  image.title %> <br>
+<% end %>

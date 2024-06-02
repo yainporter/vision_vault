@@ -1,5 +1,5 @@
 class VisionBoardImage < ApplicationRecord
-  belongs_to :upload
+  belongs_to :upload, optional: true
   belongs_to :vision_board
   has_one_attached :vision_image
 

@@ -1,9 +1,14 @@
-<%= turbo_frame_tag "create-vision-board-image-#{@upload_id}" do %>
+<% if @upload_id %>
+  <%= turbo_frame_tag "create-vision-board-image-#{@upload_id}" do %>
+  <%= render partial: "shared/flash" %>
+    <%= render partial: "form" %>
+  <% end %>
+<% else %>
+  <%= turbo_frame_tag "create-vision-board-image-#{@unsplash_id}" do %>
   <%= render partial: "shared/flash" %>
 
-  <%= simple_form_for @vision_board_image do |f| %>
-    <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
-    <%= f.input :upload_id, as: :hidden, input_html: { value: @upload_id } %>
-    <%= f.button :submit, "Add Image" %>
+    <%= render partial: "form" %>
   <% end %>
 <% end %>
+
+

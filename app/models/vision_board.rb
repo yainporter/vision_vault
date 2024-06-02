@@ -8,4 +8,8 @@ class VisionBoard < ApplicationRecord
   def image_attachments
     Upload.joins(:vision_boards).where("vision_boards.id = ?", self.id)
   end
+
+  def unsplash_ids
+    vision_board_images.pluck(:unsplash_id).compact
+  end
 end
