@@ -16,11 +16,13 @@ RSpec.describe "New Vision Board Image", type: :feature do
     end
   end
 
+  # Does this need to be tested? When would this ever happen?
   context "a User adds an invalid image result to their visionboard" do
     it "does not create a VisionBoardImage" do
       user = create(:user)
       create(:vision_board, user_id: user.id)
       user2 = create(:user)
+      create(:upload, user_id: user2.id)
 
       expect{
         login_as(user)

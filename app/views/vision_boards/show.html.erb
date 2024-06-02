@@ -1,12 +1,12 @@
 <h1><%= @vision_board.title %></h1>
 
-<% unless @images.empty? %>
-  <% @images.each do |image|  %>
-    <%= image_tag url_for(image.image.variant(resize_to_limit: [300, 300])) %>
-    <br>
-    <%=  image.name%>
-    <br>
-  <% end %>
-<% else %>
+<% if @unsplash.empty? && @uploads.empty? %>
   <p>No images, search for images!</p>
+<% elsif @uploads.present? && @unsplash.present? %>
+  <%= render partial: "upload_images" %>
+  <%= render partial: "unsplash_images" %>
+<% elsif @uploads.present? && @unsplash.empty? %>
+  <%= render partial: "upload_images" %>
+<% elsif @uploads.empty? && @unsplash.present? %>
+  <%= render partial: "unsplash_images" %>
 <% end %>
