@@ -6,4 +6,8 @@ class VisionBoardImage < ApplicationRecord
   def self.image_attachment
     Upload.joins(:vision_board_images)
   end
+
+  def self.find_image(ids)
+    VisionBoardImage.find_by(ids)
+  end
 end

@@ -1,4 +1,9 @@
-<% @unsplash.each do |image|  %>
-  <%= image_tag url_for(image.custom_size) %> <br>
-  <%=  image.title %> <br>
+<% @unsplash.each.with_index(1) do |image, index|  %>
+  <div id="unsplash-<%= index %>">
+    <%= image_tag url_for(image.custom_size) %> <br>
+    <%=  image.title %> <br>
+    <%= link_to 'Delete Image', vision_board_image_path(unsplash_id: image.id, vision_board_id: @vision_board.id), data: { turbo_method: :delete } %> <br>
+  </div>
 <% end %>
+
+
