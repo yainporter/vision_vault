@@ -21,7 +21,7 @@ class VisionBoardImagesController < ApplicationController
   end
 
   def destroy
-    vision_board_image = current_user.vision_board_images.find_image(upload_or_unsplash_id)
+    vision_board_image = current_user.vision_board_images.find_image(id)
     vision_board_image.destroy!
 
     redirect_to vision_board_path(params[:vision_board_id])
@@ -29,8 +29,16 @@ class VisionBoardImagesController < ApplicationController
 
   private
 
-  def upload_or_unsplash_id
+  def id
     params.permit(:unsplash_id, :upload_id, :vision_board_id)
+  end
+
+  def upload_or_unsplash_id
+    if vision_board_image_params[:unsplash_id].empty?
+      vision_board_image_params[:upload_id]
+    elsif vision_board_image_params[:upload_id].empty?
+      vision_board_image_params[:unsplash_id]
+    end
   end
 
   def vision_board_image_params
