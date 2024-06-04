@@ -2,7 +2,6 @@
   <div id="upload-<%= index %>">
     <%= image_tag url_for(image.image.variant(resize_to_limit: [300, 300])) %> <br>
     <%=  image.name %> <br>
-    form
     <%= link_to 'Delete Image', vision_board_image_path(image_id: image.id, vision_board_id: @vision_board.id), data: { turbo_method: :delete } %><br>
   </div>
 <% end %>
