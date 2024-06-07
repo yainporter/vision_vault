@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.nav-text {
+  font-family: kudryashev-d-contrast, sans-serif;
+}
