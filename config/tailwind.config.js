@@ -11,6 +11,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        ttcommons: ['tt-commons-pro', 'sans-serif'],
+        header: ['kudryashev-d-contrast', 'sans-serif']
       },
       colors: {
         'amber': '#E0CE8F'
