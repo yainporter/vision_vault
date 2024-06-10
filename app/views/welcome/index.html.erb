@@ -1,11 +1,9 @@
 <div class="container">
-  <div id="welcome-block" class="bg-black">
-    <p>
-      Hi, I'm Yain Porter. Welcome to my Vision Vault. 
-    </p>
-    <p>
-      Log in to generate your own character art, or find a vision!
-    </p>
+  <div id="welcome-block" class="bg-black box-border h-96 p-10 w-screen grid place-content-center">
+    <h1 class="text-center text-6xl font-header text-amber">WHERE IMAGINATION BECOMES REALITY</h1>
+    <div class="text-center pt-10">
+      <%= link_to "FIND YOUR VISION", search_index_path, class: "text-amber border font-comma_base border-solid border-amber px-10 py-2", method: :get %>
+    </div>
   </div>
 </div>
 
