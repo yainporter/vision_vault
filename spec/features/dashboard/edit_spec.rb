@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe "User Edit", type: :feature do
 
   describe "User image upload" do
-    let(:user) { create(:user) }
+    let!(:user) { create(:user) }
+    let!(:vision_board) { create(:vision_board, user_id: user.id)}
 
     context "a User uploads an image and fills out the current password" do
       it "attaches an image to the User avatar" do

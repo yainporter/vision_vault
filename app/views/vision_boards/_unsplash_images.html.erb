@@ -1,0 +1,12 @@
+<% @unsplash.each.with_index(1) do |image, index|  %>
+  <div class="grid gap-4">
+    <div id="unsplash-<%= index %>">
+      <p class="text-center">
+        <%=  image.title %>
+      </p>
+      <%= link_to vision_board_image_path(unsplash_id: image.id, vision_board_id: @vision_board.id), data: { "turbo_confirm": "Do you want to delete this image?", turbo_method: :delete } do %>
+        <%= image_tag url_for(image.custom_size), class: "h-auto max-w-full rounded-lg" %> 
+      <% end %>
+    </div>
+  </div>
+<% end %>

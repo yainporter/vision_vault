@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'https://use.typekit.net/pyh0olp.css' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+
   </head>
 
   <body>
     <%= render partial: "shared/nav" %>
-    <% flash.each do |type, message| %>
-      <section class=<%= type %>>
-        <p><%= message %></p>
-      </section>
-    <% end %>
+    <%= javascript_pack_tag 'application' %>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
   </body>
 </html>

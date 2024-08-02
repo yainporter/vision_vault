@@ -5,7 +5,8 @@ class VisionBoardsController < ApplicationController
 
   def show
     @vision_board = VisionBoard.find(params[:id])
-    @images = @vision_board.vision_board_images
+    @uploads = @vision_board.image_attachments
+    @unsplash = UnsplashFacade.find_images(@vision_board.unsplash_ids)
   end
 
   def new
