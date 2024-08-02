@@ -1,0 +1,14 @@
+<% if @upload_id %>
+  <%= turbo_frame_tag "create-vision-board-image-#{@upload_id}" do %>
+  <%= render partial: "shared/flash" %>
+    <%= render partial: "form" %>
+  <% end %>
+<% else %>
+  <%= turbo_frame_tag "create-vision-board-image-#{@unsplash_id}" do %>
+  <%= render partial: "shared/flash" %>
+
+    <%= render partial: "form" %>
+  <% end %>
+<% end %>
+
+

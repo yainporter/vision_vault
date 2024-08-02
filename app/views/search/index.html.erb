@@ -1,0 +1,30 @@
+<%= render partial: "shared/search_form" %>
+<% if @uploaded_images || @unsplash_images %>
+  <div id="search-results">
+    <% @uploaded_images.each do |image| %>
+      <%= image_tag url_for(image.image.variant(resize_to_limit: [300, 300])) %>
+      <br>
+      <%= turbo_frame_tag "create-vision-board-image-#{image.id}" do %>
+        <div id="results-<%= image.id %>">
+          <%=  image.name %>
+          <br>
+          <%= link_to 'Add', new_vision_board_image_path(@vision_board_image, upload_id: image.id), method: :get, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <br>
+    <% end %>
+    <% @unsplash_images.each do |image| %>
+      <%= image_tag url_for(image.custom_size) %>
+      <br>
+      <%= turbo_frame_tag "create-vision-board-image-#{image.id}" do %>
+        <div id="results-<%= image.id %>">
+          <%=  image.title %>
+          <br>
+          <%= link_to 'Add', new_vision_board_image_path(@vision_board_image, unsplash_id: image.id), method: :get, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+<% end %>
+
