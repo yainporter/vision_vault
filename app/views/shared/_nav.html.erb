@@ -28,7 +28,7 @@
             <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: "block py-2 px-3 text-amber rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ", method: :get %>
           </li>
           <li>
-            <%= link_to 'LOGOUT', destroy_user_session_path, class: "block py-2 px-3 text-amber font-semibold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent", data: { turbo_method: :delete } %>
+            <%= link_to 'LOGOUT', destroy_user_session_path, class: "block py-2 px-3 text-amber rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent", data: { turbo_method: :delete } %>
           </li>
         <% end %>
       </ul>

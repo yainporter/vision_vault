@@ -9,9 +9,10 @@ class UnsplashFacade
   def self.find_images(ids)
     find_data = []
     ids.each do |id|
-      find_data << Unsplash::Photo.find(id)
+      if id.present?
+        find_data << Unsplash::Photo.find(id)
+      end
     end
-    
     find_data.map do |data|
       UnsplashImage.new(data)
     end
