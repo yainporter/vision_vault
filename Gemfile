@@ -47,7 +47,6 @@ gem "devise"
 gem "simple_form"
 gem 'simple_form-tailwind'
 gem 'pagy'
-gem "webpacker"
 gem "preact-rails"
 gem "unsplash"
 gem "pry"

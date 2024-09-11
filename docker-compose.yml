@@ -11,7 +11,7 @@ services:
 
   web:
     build: .   # Build the Docker image for the Rails application using the Dockerfile in the current directory
-    command: zsh -c "rm -f tmp/pids/server.pid && bundle exec rails server -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ".:/app"   # Mount the current directory into the container
     ports:
