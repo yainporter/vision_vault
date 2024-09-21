@@ -3,8 +3,19 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Code is not reloaded between requests.
+  config.hosts << "app"
+  config.hosts << "app:3000"
+  config.hosts << "192.168.0.101"
+  config.hosts << "172.18.0.3"
+  config.hosts << "localhost"
+  config.hosts << "localhost:3000"
+  config.hosts << "yainporter.com"
+  config.hosts << "www.yainporter.com"
+  config.hosts << /.*\.local/  # Allow any local network hostnames
+  config.hosts << /192\.168\.\d+\.\d+/
+  config.hosts << /10\.\d+\.\d+\.\d+/
   config.enable_reloading = false
+  config.hosts << "*.yainporter.com"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -89,6 +100,12 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
+  #   "app",
+  #   "app:3000",
+  #   "192.168.0.101",
+  #   "172.18.0.3",
+  #   "localhost",
+  #   "localhost:3000"
   #   "example.com",     # Allow requests from example.com
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
   # ]
