@@ -15,7 +15,9 @@
 default: &default
   adapter: postgresql 
   encoding: unicode 
-  pool: 5 
+  pool: 5
+  username: ENV['DB_USERNAME']   # Default to 'yainporter' if DB_USER is not set
+  password: ENV['DB_PASSWORD]   # Default to 'yainporter' if DB_USER is not set
 
 development:
   <<: *default
@@ -78,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: vision_vault_production
-  username: vision_vault
-  password: dnftufg12
+  database: vision_vault_production # Use environment variable or fallback to 'yains_portfolio_production'
+  host: vision_vault_db               # Fetch DB host (e.g., vision_vault_db for Docker setup)
+  port: 5432

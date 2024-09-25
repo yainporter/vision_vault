@@ -2,20 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  config.hosts << "app"
-  config.hosts << "app:3000"
-  config.hosts << "192.168.0.101"
-  config.hosts << "172.18.0.3"
-  config.hosts << "localhost"
-  config.hosts << "localhost:3000"
-  config.hosts << "yainporter.com"
-  config.hosts << "www.yainporter.com"
-  config.hosts << /.*\.local/  # Allow any local network hostnames
-  config.hosts << /192\.168\.\d+\.\d+/
-  config.hosts << /10\.\d+\.\d+\.\d+/
   config.enable_reloading = false
-  config.hosts << "*.yainporter.com"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -39,6 +26,8 @@ Rails.application.configure do
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  config.assets.digest = true
+  config.serve_static_assets = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -99,16 +88,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "app",
-  #   "app:3000",
-  #   "192.168.0.101",
-  #   "172.18.0.3",
-  #   "localhost",
-  #   "localhost:3000"
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
+  config.hosts = [
+  "visionvault.yainporter.com",
+  /.*\.yainporter\.com/
+  ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
