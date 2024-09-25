@@ -16,8 +16,8 @@ default: &default
   adapter: postgresql 
   encoding: unicode 
   pool: 5
-  username: ENV['DB_USERNAME']   # Default to 'yainporter' if DB_USER is not set
-  password: ENV['DB_PASSWORD]   # Default to 'yainporter' if DB_USER is not set
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
 development:
   <<: *default
