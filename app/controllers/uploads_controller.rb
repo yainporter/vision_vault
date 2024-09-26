@@ -11,11 +11,10 @@ class UploadsController < ApplicationController
       VisionBoardImage.create!(vision_board_id: upload_params[:vision_board_id], upload_id: upload.id)
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace("create-vision-board-image-#{vision_board_image_params[:upload_id]}", partial: "/shared/successful_creation")
+          flash.now[:alert] = "Successfully added #{upload.name} to your vision board!"
+          render turbo_stream: turbo_stream.replace("image-upload", partial: "uploads/upload", locals: { upload: upload })
         end
       end
-      flash[:alert] = "Successfully added to your vision board!"
-      redirect_to new_upload_path
     else
       flash[:error] = "Please attach an image, try again."
       redirect_to new_upload_path

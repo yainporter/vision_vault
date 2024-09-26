@@ -27,6 +27,9 @@
     </div>
   </div>
 </form>
+<%= turbo_frame_tag "image-upload" do %>
+  <%= link_to 'Upload Image', new_upload_path, method: :get, class: "btn btn-primary" %>
+<% end %>
 <% if @unsplash.empty? && @uploads.empty? %>
   <p>No images, search for images!</p>
 <% elsif @uploads.present? && @unsplash.present? %>

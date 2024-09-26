@@ -6,9 +6,6 @@
 <% else %>
   <%= turbo_frame_tag "create-vision-board-image-#{@unsplash_id}" do %>
   <%= render partial: "shared/flash" %>
-
     <%= render partial: "form" %>
   <% end %>
 <% end %>
-
-

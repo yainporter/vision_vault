@@ -1,3 +1,6 @@
+<%= turbo_frame_tag "image-upload" do %>
+  <%= link_to 'Upload Image', new_upload_path, method: :get, class: "btn btn-primary" %>
+<% end %>
 <%= render partial: "shared/search_form" %>
 <% if @uploaded_images || @unsplash_images %>
   <div id="search-results">

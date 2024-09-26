@@ -6,6 +6,7 @@ RUN apt-get update -qq && \
     zsh \
     curl \
     nodejs \
+    libvips \
     postgresql-client \
     build-essential \ 
     libpq-dev \
@@ -31,8 +32,6 @@ RUN mkdir -p tmp/sockets tmp/pids && \
 # Precompile assets (if using Rails)
 RUN bundle exec rake assets:precompile || (echo "Failed to precompile assets" && exit 1)
 
-RUN mkdir -p /app/storage && \
-    chown -R nobody:nogroup /app/storage
 
 # Script to make sure the server doesn't auto-exit
 COPY entrypoint.sh /usr/bin/
