@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+.border-amber {
+  border-color: #E0CE8F;
+}
+
+@font-face {
+  src: url(https://use.typekit.net/pyh0olp.css);
+  font-family: "comma-base", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}

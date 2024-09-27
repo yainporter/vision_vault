@@ -1,0 +1,6 @@
+<%= simple_form_for @vision_board_image do |f| %>
+  <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
+  <%= f.input :upload_id, as: :hidden, input_html: { value: @upload_id } %>
+  <%= f.input :unsplash_id, as: :hidden, input_html: { value: @unsplash_id } %>
+  <%= f.button :submit, "Add Image" %>
+<% end %>

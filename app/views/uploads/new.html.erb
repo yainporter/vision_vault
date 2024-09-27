@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "image-upload" do %>
+  <%= simple_form_for @upload do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :image, as: :file %>
+    <%= f.collection_select :vision_board_id, @vision_boards, :id, :title %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

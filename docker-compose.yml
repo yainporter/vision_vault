@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:14   # Use the official PostgreSQL image from Docker Hub
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data   # Persistent storage for database data
+    environment:
+      POSTGRES_USER: yainporter
+      POSTGRES_PASSWORD: dnftufg12
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .   # Build the Docker image for the Rails application using the Dockerfile in the current directory
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ".:/app"   # Mount the current directory into the container
+    ports:
+      - "3000:3000"   # Map port 3000 on the host to port 3000 in the container
+    depends_on:
+      - db   # Ensure the database service is started before the Rails application
+    environment:
+      DATABASE_URL: postgresql://yainporter:dnftufg12@db:5432/vision_vault
