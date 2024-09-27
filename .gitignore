@@ -46,3 +46,4 @@ yarn-debug.log*
 /node_modules
 
 /config/credentials/production.key
+.DS_Store
