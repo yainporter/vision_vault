@@ -7,9 +7,7 @@
   <%= render partial: "shared/flash" %>
 </div>
 <% unless @vision_boards.empty? %>
-  <%= turbo_frame_tag "image-upload" do %>
-      <%= link_to 'Upload Image', new_upload_path, method: :get, class: "btn btn-primary" %>
-  <% end %>
+
   <div class="vision-boards px-4">
     <h2 class="text-center">Your Vision Boards:</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
