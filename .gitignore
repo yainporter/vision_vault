@@ -58,3 +58,4 @@ yarn-debug.log*
 
 /config/credentials/production.key
 .DS_Store
+/spec/fixtures/vcr_cassettes
