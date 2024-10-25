@@ -31,4 +31,15 @@ RSpec.describe "New Vision Board Image", type: :feature do
     }.not_to change {user.vision_board_images.count}
     end
   end
+
+  context "a user not logged in clicks add for an image" do
+    it "returns an error response" do
+      user2 = create(:user)
+      create(:upload, name: "Dog", user_id: user2.id)
+
+      visit new_vision_board_image_path(upload_ud: 1)
+      click_button "Add Image"
+
+    end
+  end
 end

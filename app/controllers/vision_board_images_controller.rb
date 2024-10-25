@@ -1,9 +1,15 @@
 class VisionBoardImagesController < ApplicationController
   def new
-    @vision_board_image = VisionBoardImage.new
-    @vision_boards = current_user.vision_boards
-    @upload_id = params[:upload_id]
-    @unsplash_id = params[:unsplash_id]
+    require 'pry'; binding.pry
+    if current_user
+      @vision_board_image = VisionBoardImage.new
+      @vision_boards = current_user.vision_boards
+      @upload_id = params[:upload_id]
+      @unsplash_id = params[:unsplash_id]
+    else
+      redirect_to new_user_session_path
+      flash[:error] = "Please log in or create an account to add an image to your Vision Board"
+    end
   end
 
   def create

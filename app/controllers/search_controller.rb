@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+
   def index
     begin
       @uploaded_images = Upload.image_search(keyword)

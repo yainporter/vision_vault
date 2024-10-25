@@ -1,9 +1,13 @@
 class UploadsController < ApplicationController
   def new
-    @upload = Upload.new
-    @vision_boards = current_user.vision_boards
+    if current_user
+      @upload = Upload.new
+      @vision_boards = current_user.vision_boards
+    else
+      flash[:error] = "Please log in or create an account to upload an image"
+    end
   end
-
+  
   def create
     upload = current_user.uploads.new(upload_params)
     if upload.save! && upload_params[:image]
